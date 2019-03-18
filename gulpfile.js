@@ -67,7 +67,7 @@ gulp.task('scripts', ['clean'], function() {
     }))
     .pipe(gulp.dest('dist'))
     .pipe($.sourcemaps.init())
-    .pipe($.uglify({preserveComments: 'some'}))
+    .pipe($.uglify({ output: { comments: 'some' }}))
     .pipe($.concat('select.min.js'))
     .pipe($.sourcemaps.write('./'))
     .pipe(gulp.dest('dist'));
@@ -83,7 +83,7 @@ gulp.task('styles', ['clean'], function() {
     }))
     .pipe($.concat('select.css'))
     .pipe(gulp.dest('dist'))
-    .pipe($.minifyCss())
+    .pipe($.cleanCss())
     .pipe($.concat('select.min.css'))
     .pipe($.sourcemaps.write('../dist', {debug: true}))
     .pipe(gulp.dest('dist'));
